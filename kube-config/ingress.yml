@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: backendtodoingress
+  labels:
+    name: backendtodoingress
+spec:
+  rules:
+  - host: kubernetes.docker.internal
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/backend_todo/v1"
+        backend:
+          service:
+            name: backendtodoservice
+            port: 
+              number: 8080
